@@ -4,16 +4,26 @@ A cross-platform solution to turn your Android phone into a webcam and IP networ
 
 ## Features
 
+### Core Streaming
 - **Virtual Webcam**: Use your Android phone as a webcam on Linux (Windows/macOS via OBS)
 - **Audio + Video**: Full A/V streaming with AAC audio and H.264 video
 - **Auto-Reconnection**: Stream continues even if WiFi drops briefly
-- **Quality Controls**: 4 presets (Low/Medium/High/Ultra) + custom mode
-- **Adaptive Bitrate**: Automatic quality adjustment based on network ⭐ NEW v0.2!
-- **Stream Recording**: Save to MP4/MKV while viewing ⭐ NEW v0.2!
-- **Network Stats**: Real-time latency, jitter, packet loss tracking ⭐ NEW v0.2!
-- **Enhanced GUI**: Stats dashboard with FPS graphs ⭐ NEW v0.2!
-- **IP Camera**: Stream camera feed over network using RTSP/RTP protocol
 - **Low Latency**: Optimized streaming with minimal delay (~50-100ms)
+- **IP Camera**: Stream camera feed over network using RTSP/RTP protocol
+
+### Quality & Performance
+- **Quality Presets**: CLI support for easy preset selection ⭐ NEW v0.3!
+- **Dynamic Quality Control**: Server-side quality changes via RTSP ⭐ NEW v0.3!
+- **Adaptive Bitrate**: Automatic quality adjustment based on network
+- **Network Stats**: Real-time latency, jitter, packet loss tracking
+
+### Recording & Monitoring
+- **GUI Recording Controls**: Record streams directly from GUI ⭐ NEW v0.3!
+- **Recording Status Display**: Real-time frames, file size, duration ⭐ NEW v0.3!
+- **Stream Recording**: Save to MP4/MKV while viewing
+- **Enhanced GUI**: Stats dashboard with FPS graphs
+
+### Platform Support
 - **Cross-Platform**: Desktop client written in Rust, works on all major platforms
 - **Native Performance**: Android app built with Kotlin for optimal performance
 - **Dual Interface**: CLI and beautiful GUI clients available
@@ -87,21 +97,32 @@ cargo build --release
    # Basic usage
    ./target/release/monkeysee-client --url rtsp://PHONE_IP:8554/camera --device /dev/video10
 
-   # With audio playback
-   ./target/release/monkeysee-client --url rtsp://PHONE_IP:8554/camera --device /dev/video10 --audio
+   # With quality preset (NEW in v0.3!)
+   ./target/release/monkeysee-client --url rtsp://PHONE_IP:8554/camera --device /dev/video10 --quality high
 
-   # Auto-reconnection is enabled by default, disable if needed
-   ./target/release/monkeysee-client --url rtsp://PHONE_IP:8554/camera --device /dev/video10 --auto-reconnect=false
+   # With audio and recording
+   ./target/release/monkeysee-client --url rtsp://PHONE_IP:8554/camera --device /dev/video10 --audio --record stream.mp4
+
+   # All features together
+   ./target/release/monkeysee-client --url rtsp://PHONE_IP:8554/camera --device /dev/video10 \
+     --quality high --audio --adaptive-bitrate --record meeting.mp4
    ```
 4. Use `/dev/video10` in any webcam application!
 5. Check the stats logged every 10 seconds for streaming quality
+
+**Quality Presets** (v0.3):
+- `--quality low`: 480p @ 15fps (poor WiFi)
+- `--quality medium`: 720p @ 24fps (normal WiFi)
+- `--quality high`: 720p @ 30fps (good WiFi, default)
+- `--quality ultra`: 1080p @ 30fps (5GHz WiFi)
 
 ## Documentation
 
 ### User Guides
 - **[Complete Setup Guide](SETUP.md)** - Installation and configuration
-- **[v0.2.0 Features](FEATURES_V0.2_SUMMARY.md)** - New features guide ⭐ NEW!
-- **[Testing Guide](TESTING_V0.2.md)** - Comprehensive testing checklist ⭐ NEW!
+- **[v0.3.0 Progress](V0.3_PROGRESS_SUMMARY.md)** - Latest features & status ⭐ NEW!
+- **[v0.2.0 Features](FEATURES_V0.2_SUMMARY.md)** - v0.2 feature guide
+- **[Testing Guide](TESTING_V0.2.md)** - Comprehensive testing checklist
 - [Enhancements Summary](ENHANCEMENTS_SUMMARY.md) - v0.1 improvements
 
 ### Component Guides

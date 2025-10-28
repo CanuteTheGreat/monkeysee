@@ -1,0 +1,47 @@
+# Rust
+/desktop/target/
+desktop/**/Cargo.lock
+desktop/**/*.rs.bk
+desktop/**/*.pdb
+
+# Android
+android/*.iml
+android/.gradle
+android/local.properties
+android/.idea/
+android/.DS_Store
+android/build
+android/captures
+android/.externalNativeBuild
+android/.cxx
+android/*.apk
+android/*.ap_
+android/*.aab
+
+# Android generated files
+android/*/build/
+android/gen/
+android/out/
+
+# Gradle files
+android/.gradle/
+android/gradle/
+android/gradlew
+android/gradlew.bat
+
+# Local configuration file
+android/local.properties
+
+# IntelliJ
+*.iml
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
+*.swo
+*~
